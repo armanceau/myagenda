@@ -1,23 +1,76 @@
-{% extends 'base.html.twig' %} {% block title %}Add contact{% endblock %} 
-{%block body %}
-    <div id="container_form" style="width:40%; margin:auto;">
+{% extends 'base.html.twig' %}
 
-        <h1>Add Contact</h1>
+{% block body %}
+<style>
+    .line{
+        height: 48vh;
+        width: 0.7px;
+    }
+    .divLine{
+        width: 10%;
+    }
+    .left{
+        width: 45%;
+    }
+    .right{
+        width: 45%;
+        text-align: center;
+    }
+</style>
+<section class="">
+    <div class="container px-4 px-lg-5 mt-5 d-flex align-items-center w-100 container-about" style="flex-direction: row;">
+        <div class="left">
+            <h1>Ajouter un contact </h1>
 
-        {{ form_start(NewContactForm) }}
+            {{ form_start(NewContactForm) }}
 
-        {{ form_row(NewContactForm.nom) }}
+            <div class="mb-3 w-50">
+                {{ form_row(NewContactForm.nom, {
+                    label: 'Votre nom :',
+                    attr: {
+                        'class': 'form-control'
+                    }
+                }) }}
+            </div>
 
-        {{ form_row(NewContactForm.prenom) }}
+            <div class="mb-3 w-50">
+                {{ form_row(NewContactForm.prenom, {
+                    label: 'Votre prénom :',
+                    attr: {
+                        'class': 'form-control'
+                    }
+                }) }}
+            </div>
 
-        {{ form_row(NewContactForm.email) }}
+            <div class="mb-3 w-50">
+                {{ form_row(NewContactForm.email, {
+                    label: 'Votre email :',
+                    attr: {
+                        'class': 'form-control'
+                    }
+                }) }}
+            </div>
 
-        {{ form_row(NewContactForm.telephone) }}
+            <div class="mb-3 w-50">
+                {{ form_row(NewContactForm.telephone, {
+                    label: 'Votre téléphone :',
+                    attr: {
+                        'class': 'form-control'
+                    }
+                }) }}
+            </div>
 
+            <button class="btn btn-dark" type="submit">Ajouter au contact</button>
 
-        <button class="btn btn-dark" type="submit">Add to Contact</button>
-
-        {{ form_end(NewContactForm) }}
-
+            {{ form_end(NewContactForm) }}
+        </div>
+        <div class="divLine d-flex justify-content-center align-items-center">
+            <div class="line bg-dark rounded-pill"></div>
+        </div>
+        <div class="right">
+            <img src="{{ asset('img/contact.webp') }}" alt="Description de l'image">
+        </div>
     </div>
+</section>
+    
 {% endblock %}

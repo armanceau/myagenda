@@ -43,7 +43,7 @@ class ContactController extends AbstractController
             $entityManager->persist($contact);
             $entityManager->flush();
 
-            $this->addFlash('success',"Le contact a bien été ajouté");
+            $this->addFlash('success',"le contact a bien été ajouté");
 
             // Faites tout ce que vous devez faire après l'ajout
 
@@ -62,6 +62,8 @@ class ContactController extends AbstractController
         $contact = $repos->find($id);
 
         $repos->remove($contact);
+
+        $this->addFlash('success',"le contact a bien été supprimé");
 
         return $this->redirectToRoute('app_default');   
     }
@@ -101,6 +103,8 @@ class ContactController extends AbstractController
 
             // Utilisez le repository pour enregistrer les données en base de données
             $repos->save($formData);
+
+            $this->addFlash('success',"le contact a bien été modifié");
 
             // Redirige vers une autre page ou affiche un message de réussite
             return $this->redirectToRoute('app_default');
